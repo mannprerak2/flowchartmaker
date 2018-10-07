@@ -10,32 +10,30 @@
     <script src="./lib/jquery.min.js"></script>
     <script src="./lib/bootstrap.bundle.js"></script>
     <script src="./lib/flowchart.min.js"></script>
+    <script src="./lib/vue.min.js"></script>
     <script src="./app.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">'Flow-Chart-Maker'</span>
-        <button id="navdroper" style="margin: 10px; float: right" class="btn btn-link dropdown-toggle" data-toggle="dropdown">How to use?</button>
 
+        <button id="navdroper" class="btn btn-link dropdown-toggle" data-toggle="dropdown">How
+            to use?</button>
+        <button id="print" type="button" class="btn btn-primary" onclick="PrintDiv()">Download
+            Flowchart</button>
         <div class="dropdown-menu howtomenu">
             <h2>Usage</h2>
             <ul>
-                <li>Declare all blocks as variables, as follows :-<br>
-                    &nbsp &nbsp &nbsp var_name=>block_type: some_text_you_want , eg:-<br>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp st=>start : Start program<br>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp en=>end: program ends<br>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp cond=>condition: Is x>5 ?<br>
-                    &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp op=>operation: subtract 3 from x<br>
+                <li>Declare Blocks, e.g<br>
+                    &nbsp &nbsp &nbsp variable_name => block_type : some_text<br>
                 </li>
-                <li>Connect them in proper sequence, eg.<br>
-                    &nbsp &nbsp &nbsp st->var2->var3(right)->cond<br>
-                    &nbsp &nbsp &nbsp cond(yes,right)->var2<br>
-                    &nbsp &nbsp &nbsp cond(no)->en<br>
-                    &nbsp &nbsp You can also add direction of arrow as done for var3 to cond<br>
-                    if var is condition block, eg cond,  there are 2 paths available namely, yes and no</li>
+                <li>Connect Blocks, eg.<br>
+                    &nbsp &nbsp &nbsp variable1->variable2(direction)->condition1<br>
+                    &nbsp &nbsp &nbsp condition1(yes)->variable3<br>
+                    &nbsp &nbsp &nbsp condition1(no)->variable4<br>
             </ul>
-            <h2>Available types of block</h2>
+            <h2>Block types:</h2>
             <ol>
                 <li>start</li>
                 <li>end</li>
@@ -47,7 +45,8 @@
         </div>
     </nav>
     <div class="right container">
-        <textarea id="code" class="textbox" spellcheck="false">
+        <h3>Declare Blocks</h3>
+        <textarea id="code-declare" class="textbox" spellcheck="false">
 st=>start: Start
 e=>end: End
 cond=>condition: A condition Statement?
@@ -56,13 +55,13 @@ cn=>operation: Do task B
 getIn=>inputoutput: Enter a value for task
 comp=>operation: calculating
 print=>inputoutput: This is the result
-
-st->getIn->comp(right)->cond
-cond(yes)->print(right)->e
-cond(no)->getIn
-
         </textarea>
-        <button id="print" type="button" class="btn btn-primary" onclick="PrintDiv()">Download Flowchart</button>
+        <h3>Connect Blocks</h3>
+        <textarea id="code-connect" class="textbox" spellcheck="false">
+st->getIn->comp(right)->cond
+cond(yes)->cy(right)->print(right)->e
+cond(no)->cn(right)->getIn
+        </textarea>
     </div>
     <div id="canvas" class="left" download></div>
 </body>

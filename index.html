@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>flowchart.js · Playground</title>
+    <link rel="stylesheet" href="./app.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="http://flowchart.js.org/flowchart-latest.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <div class="right">
+        <h1>Enter Text Below</h1>
+        <textarea id="code" class="textbox" spellcheck="false">
+st=>start: Start
+e=>end: End
+cond=>condition: A condition Statement?
+cy=>operation: Do task A
+cn=>operation: Do task B
+getIn=>inputoutput: Enter a value for task
+comp=>operation: calculating
+print=>inputoutput: This is the result
+
+st->getIn->comp(right)->cond
+cond(yes)->print(right)->e
+cond(no)->getIn
+
+        </textarea>
+        <button id="run" type="button">Make</button>
+        <button id="print" type="button" onclick="PrintDiv()">Get Image</button>
+    </div>
+    <div id="canvas" class="left" download></div>
+</body>
+
+</html>

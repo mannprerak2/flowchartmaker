@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+.left{
+    float: left;
+    height: 100%
+}
+.right{
+    float: right;
+    width: 40%;
+    height: 100%;
+    border-left: 1px rgb(224, 224, 224) solid;
+    padding: 10px;
+}
+.textbox{
+    width: 100%;
+    height: 70vh;
+    outline: none;
+    resize: none;
+    overflow-x: scroll;
+    border: none;
+    background-color: rgb(241, 241, 241);
+}

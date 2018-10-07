@@ -1,14 +1,14 @@
 
 window.onload = function () {
-    var btn = document.getElementById("run"),
-        cd = document.getElementById("code"),
+    var cd = document.getElementById("code"),
+        canavs = document.getElementById("canvas"),
         chart;
 
-    (btn.onclick = function () {
+    (cd.oninput = function () {
         try {
             var code = cd.value;
             if (chart) {
-                chart.clean();
+                canavs.innerHTML='';
             }
 
             chart = flowchart.parse(code);

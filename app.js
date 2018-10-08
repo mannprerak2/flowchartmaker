@@ -1,10 +1,29 @@
-var cddec,cdcon,canvas,chart;
+var cddec, cdcon, canvas, chart;
+var opts = {
+    'line-width': 3,
+    'maxWidth': 90,
+    'line-length': 50,
+    'text-margin': 10,
+    'font-size': 14,
+    'font-weight':'bold',
+    'font-color': 'rbg(60,60,60)',
+    // 'font': 'normal',
+    // 'font-family': 'calibri',
+    // 'font-weight': 'normal',
+    'line-color': 'rbg(60,60,60)',
+    'element-color': 'rbg(60,60,60)',
+    'fill': 'rgb(243,243,243)',
+    'yes-text': 'Yes',
+    'no-text': 'No',
+    'arrow-end': 'block',
+    'scale': 1
+};
 window.onload = function () {
     cddec = document.getElementById("code-declare");
     cdcon = document.getElementById("code-connect");
     canvas = document.getElementById("canvas");
 
-    cdcon.oninput = cddec.oninput = function(){
+    cdcon.oninput = cddec.oninput = function () {
         updateChart();
     }
     updateChart();//calling initially to load demo chart
@@ -30,53 +49,13 @@ function PrintDiv() {
 
 function updateChart() {
     try {
-        var code = cddec.value+"\n"+cdcon.value;
+        var code = cddec.value + "\n" + cdcon.value;
         if (chart) {
             canvas.innerHTML = '';
         }
 
         chart = flowchart.parse(code);
-        chart.drawSVG('canvas', {
-            // 'x': 30,
-            // 'y': 50,
-            'line-width': 3,
-            'maxWidth': 3,//ensures the flowcharts fits within a certian width
-            'line-length': 50,
-            'text-margin': 10,
-            'font-size': 14,
-            'font': 'normal',
-            'font-weight': 'bold',
-            'font-color': 'rgb(60,60,60)',
-            'line-color': 'rgb(60,60,60)',
-            'element-color': 'rgb(60,60,60)',
-            'fill': 'rgb(245,245,245)',
-            'yes-text': 'Yes',
-            'no-text': 'No',
-            'arrow-end': 'block',
-            'scale': 1,
-            // 'symbols': {
-            //     'start': {
-            //         'font-color': 'red',
-            //         'element-color': 'green',
-            //         'fill': 'yellow'
-            //     },
-            //     'end': {
-            //         'class': 'end-element'
-            //     }
-            // },
-            // 'flowstate': {
-            //     'past': { 'fill': '#CCCCCC', 'font-size': 12 },
-            //     'current': { 'fill': 'yellow', 'font-color': 'red', 'font-weight': 'bold' },
-            //     'future': { 'fill': '#FFFF99' },
-            //     'request': { 'fill': 'blue' },
-            //     'invalid': { 'fill': '#444444' },
-            //     'approved': { 'fill': '#58C4A3', 'font-size': 12, 'yes-text': 'APPROVED', 'no-text': 'n/a' },
-            //     'rejected': { 'fill': '#C45879', 'font-size': 12, 'yes-text': 'n/a', 'no-text': 'REJECTED' }
-            // }
-        });
-        $('[id^=sub1]').click(function () {
-            alert('info here');
-        });
+        chart.drawSVG('canvas',opts);
     }
     catch (err) {
         chart = document.getElementById("canvas");
